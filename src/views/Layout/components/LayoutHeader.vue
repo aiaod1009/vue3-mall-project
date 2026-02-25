@@ -1,5 +1,4 @@
 <script setup>
-import { getCategoryAPI } from '@/apis/layout';
 import { useCategoryStore } from '@/stores/category';
 
 const categoryStore = useCategoryStore();
