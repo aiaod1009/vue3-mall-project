@@ -1,5 +1,6 @@
 <script setup>
 import DetailHot from './components/DetailHot.vue';
+import ImageView from '@/components/ImageView/index.vue';
 import { getDetail } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -24,7 +25,7 @@ onMounted(() => getDetailData())
           2. v-if手动控制渲染时机，保证只有数据存在才渲染 -->
           <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{ goods.categories[1].name }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{ goods.categories?.[0].name
+          <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{ goods.categories[0].name
           }}
           </el-breadcrumb-item>
           <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
@@ -36,7 +37,7 @@ onMounted(() => getDetailData())
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-
+              <ImageView />
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -56,7 +57,7 @@ onMounted(() => getDetailData())
                 </li>
                 <li>
                   <p>品牌信息</p>
-                  <p>{{ goods.brand.name }}+</p>
+                  <p>{{ goods.brand?.name }}+</p>
                   <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                 </li>
               </ul>
@@ -121,9 +122,9 @@ onMounted(() => getDetailData())
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
               <!-- 24小时 -->
-              <DetailHot :hot-typeq="1" />
+              <DetailHot :hot-type="1" />
               <!-- 周 -->
-              <DetailHot :hot-typeq="2" />
+              <DetailHot :hot-type="2" />
             </div>
           </div>
         </div>
