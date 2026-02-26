@@ -3,7 +3,7 @@
 
 // 表单检验(账号名+密码)
 
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -17,6 +17,12 @@ const form = ref({
   account: '',
   password: '',
   agree: true
+})
+
+// 页面挂载时从 store 回填账号和密码（如果有）
+onMounted(() => {
+  form.value.account = userStore.userInfo.account || ''
+  form.value.password = userStore.userInfo.password || ''
 })
 
 // 2.准备规则对象
@@ -62,6 +68,7 @@ const doLogin = () => {
       router.replace({ path: '/' })
     }
   })
+
 }
 
 // 1. 用户名与密码 只需要通过简单的配置(看文档的方式 - 复杂功能通过不同组件拆解)
