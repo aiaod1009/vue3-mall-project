@@ -5,8 +5,6 @@ const cartStore = useCartStore()
 // 单选回调
 const singleCheck = (i, selected) => {
   console.log(i, selected)
-  // store cartList 数组 无法知道要修改谁的选中状态？
-  // 除了selected还要补充一个用来筛选的参数 - sluId
   cartStore.singleCheck(i.skuId, selected)
 }
 
@@ -96,12 +94,15 @@ const allCheck = (selected) => {
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .xtx-cart-page {
   margin-top: 20px;
 
   .cart {
-    background: #fff;
-    color: #666;
+    background: $bgCard;
+    color: $textPrimary;
+    border-radius: 12px;
 
     table {
       border-spacing: 0;
@@ -111,12 +112,12 @@ const allCheck = (selected) => {
       th,
       td {
         padding: 10px;
-        border-bottom: 1px solid #f5f5f5;
+        border-bottom: 1px solid $borderColor;
 
         &:first-child {
           text-align: left;
           padding-left: 30px;
-          color: #999;
+          color: $textMuted;
         }
       }
 
@@ -124,6 +125,7 @@ const allCheck = (selected) => {
         font-size: 16px;
         font-weight: normal;
         line-height: 50px;
+        color: $textPrimary;
       }
     }
   }
@@ -131,10 +133,10 @@ const allCheck = (selected) => {
   .cart-none {
     text-align: center;
     padding: 120px 0;
-    background: #fff;
+    background: $bgCard;
 
     p {
-      color: #999;
+      color: $textMuted;
       padding: 20px 0;
     }
   }
@@ -171,6 +173,7 @@ const allCheck = (selected) => {
     img {
       width: 100px;
       height: 100px;
+      border-radius: 8px;
     }
 
     >div {
@@ -180,23 +183,24 @@ const allCheck = (selected) => {
 
       .attr {
         font-size: 14px;
-        color: #999;
+        color: $textMuted;
       }
     }
   }
 
   .action {
     display: flex;
-    background: #fff;
+    background: $bgCard;
     margin-top: 20px;
     height: 80px;
     align-items: center;
     font-size: 16px;
     justify-content: space-between;
     padding: 0 30px;
+    border-radius: 12px;
 
     .xtx-checkbox {
-      color: #999;
+      color: $textMuted;
     }
 
     .batch {
@@ -213,11 +217,10 @@ const allCheck = (selected) => {
   }
 
   .tit {
-    color: #666;
+    color: $textPrimary;
     font-size: 16px;
     font-weight: normal;
     line-height: 50px;
   }
-
 }
 </style>

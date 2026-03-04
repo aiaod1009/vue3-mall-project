@@ -6,9 +6,6 @@ import { useCategory } from './composables/useCategory';
 const { bannerList } = useBanner();
 const { categoryData } = useCategory();
 
-
-// 获取banner
-
 </script>
 
 <template>
@@ -43,7 +40,7 @@ const { categoryData } = useCategory();
       </div>
       <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
         <div class="head">
-          <h3>- {{ item.name }}-</h3>
+          <h3>- {{ item.name }} -</h3>
         </div>
         <div class="body">
           <GoodsItem v-for="good in item.goods" :good="good" :key="good.id" />
@@ -53,12 +50,13 @@ const { categoryData } = useCategory();
   </div>
 </template>
 
-
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .top-category {
   h3 {
     font-size: 28px;
-    color: #666;
+    color: $textPrimary;
     font-weight: normal;
     text-align: center;
     line-height: 100px;
@@ -66,7 +64,9 @@ const { categoryData } = useCategory();
 
   .sub-list {
     margin-top: 20px;
-    background-color: #fff;
+    background-color: $bgCard;
+    border-radius: 12px;
+    padding: 20px;
 
     ul {
       display: flex;
@@ -77,15 +77,17 @@ const { categoryData } = useCategory();
         width: 168px;
         height: 160px;
 
-
         a {
           text-align: center;
           display: block;
           font-size: 16px;
+          color: $textPrimary;
+          transition: all 0.3s ease;
 
           img {
             width: 100px;
             height: 100px;
+            border-radius: 8px;
           }
 
           p {
@@ -94,6 +96,7 @@ const { categoryData } = useCategory();
 
           &:hover {
             color: $xtxColor;
+            transform: translateY(-3px);
           }
         }
       }
@@ -101,9 +104,11 @@ const { categoryData } = useCategory();
   }
 
   .ref-goods {
-    background-color: #fff;
+    background-color: $bgCard;
     margin-top: 20px;
     position: relative;
+    border-radius: 12px;
+    padding: 20px;
 
     .head {
       .xtx-more {
@@ -114,7 +119,7 @@ const { categoryData } = useCategory();
 
       .tag {
         text-align: center;
-        color: #999;
+        color: $textMuted;
         font-size: 20px;
         position: relative;
         top: -20px;
@@ -137,6 +142,8 @@ const { categoryData } = useCategory();
   width: 1240px;
   height: 500px;
   margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
 
   img {
     width: 100%;

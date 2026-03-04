@@ -135,9 +135,11 @@ const doLogin = () => {
 </template>
 
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .login-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e4e4;
+  background: $bgCard;
+  border-bottom: 1px solid $borderColor;
 
   .container {
     display: flex;
@@ -163,13 +165,14 @@ const doLogin = () => {
     font-weight: normal;
     margin-bottom: 38px;
     margin-left: 20px;
-    color: #666;
+    color: $textSecondary;
   }
 
   .entry {
     width: 120px;
     margin-bottom: 38px;
     font-size: 16px;
+    color: $textSecondary;
 
     i {
       font-size: 14px;
@@ -180,24 +183,26 @@ const doLogin = () => {
 }
 
 .login-section {
-  background: url('@/assets/images/login-bg.png') no-repeat center / cover;
+  background: linear-gradient(135deg, $bgDark 0%, $bgCard 100%);
   height: 488px;
   position: relative;
 
   .wrapper {
     width: 380px;
-    background: #fff;
+    background: $bgCard;
     position: absolute;
     left: 50%;
     top: 54px;
     transform: translate3d(100px, 0, 0);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 217, 165, 0.15);
+    border-radius: 12px;
+    border: 1px solid $borderColor;
 
     nav {
       font-size: 14px;
       height: 55px;
       margin-bottom: 20px;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $borderColor;
       display: flex;
       padding: 0 40px;
       text-align: right;
@@ -210,6 +215,7 @@ const doLogin = () => {
         font-size: 18px;
         position: relative;
         text-align: center;
+        color: $textPrimary;
       }
     }
   }
@@ -217,21 +223,26 @@ const doLogin = () => {
 
 .login-footer {
   padding: 30px 0 50px;
-  background: #fff;
+  background: $bgCard;
 
   p {
     text-align: center;
-    color: #999;
+    color: $textMuted;
     padding-top: 20px;
 
     a {
       line-height: 1;
       padding: 0 10px;
-      color: #999;
+      color: $textSecondary;
       display: inline-block;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $xtxColor;
+      }
 
       ~a {
-        border-left: 1px solid #ccc;
+        border-left: 1px solid $borderColor;
       }
     }
   }
@@ -264,8 +275,8 @@ const doLogin = () => {
         >i {
           width: 34px;
           height: 34px;
-          background: #cfcdcd;
-          color: #fff;
+          background: $bgHover;
+          color: $textMuted;
           position: absolute;
           left: 1px;
           top: 1px;
@@ -276,10 +287,12 @@ const doLogin = () => {
 
         input {
           padding-left: 44px;
-          border: 1px solid #cfcdcd;
+          border: 1px solid $borderColor;
           height: 36px;
           line-height: 36px;
           width: 100%;
+          background: $bgDark;
+          color: $textPrimary;
 
           &.error {
             border-color: $priceColor;
@@ -298,8 +311,8 @@ const doLogin = () => {
           text-align: center;
           line-height: 34px;
           font-size: 14px;
-          background: #f5f5f5;
-          color: #666;
+          background: $bgHover;
+          color: $textSecondary;
           width: 90px;
           height: 34px;
           cursor: pointer;
@@ -321,7 +334,7 @@ const doLogin = () => {
 
     .agree {
       a {
-        color: #069;
+        color: $xtxColor;
       }
     }
 
@@ -329,13 +342,14 @@ const doLogin = () => {
       display: block;
       width: 100%;
       height: 40px;
-      color: #fff;
+      color: $bgDark;
       text-align: center;
       line-height: 40px;
       background: $xtxColor;
+      font-weight: 600;
 
       &.disabled {
-        background: #cfcdcd;
+        background: $bgHover;
       }
     }
   }
@@ -348,16 +362,25 @@ const doLogin = () => {
 
     .url {
       a {
-        color: #999;
-        margin-left: 10px;
+        color: $textMuted;
+
+        &:hover {
+          color: $xtxColor;
+        }
       }
     }
   }
 }
 
 .subBtn {
-  background: $xtxColor;
+  background: $gradientPrimary;
   width: 100%;
-  color: #fff;
+  color: $bgDark;
+  font-weight: 600;
+  border: none;
+
+  &:hover {
+    box-shadow: $shadowGlow;
+  }
 }
 </style>

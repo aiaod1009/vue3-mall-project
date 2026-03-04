@@ -41,6 +41,8 @@ const cartStore = useCartStore()
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .cart {
   width: 50px;
   position: relative;
@@ -52,6 +54,12 @@ const cartStore = useCartStore()
     text-align: center;
     position: relative;
     display: block;
+    color: $textPrimary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $xtxColor;
+    }
 
     .icon-cart {
       font-size: 22px;
@@ -64,7 +72,7 @@ const cartStore = useCartStore()
       top: 0;
       padding: 1px 6px;
       line-height: 1;
-      background: $helpColor;
+      background: $gradientAccent;
       color: #fff;
       font-size: 12px;
       border-radius: 10px;
@@ -88,10 +96,11 @@ const cartStore = useCartStore()
     position: absolute;
     top: 50px;
     right: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background: #fff;
-    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    background: $bgCard;
+    border-radius: 12px;
     padding-top: 10px;
+    border: 1px solid $borderColor;
 
     &::before {
       content: "";
@@ -100,7 +109,7 @@ const cartStore = useCartStore()
       top: -10px;
       width: 20px;
       height: 20px;
-      background: #fff;
+      background: $bgCard;
       transform: scale(0.6, 1) rotate(45deg);
       box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.1);
     }
@@ -114,12 +123,12 @@ const cartStore = useCartStore()
       padding: 10px;
       display: flex;
       justify-content: space-between;
-      background: #f8f8f8;
+      background: $bgHover;
       align-items: center;
 
       .total {
         padding-left: 10px;
-        color: #999;
+        color: $textMuted;
 
         p {
           &:last-child {
@@ -142,21 +151,21 @@ const cartStore = useCartStore()
     }
 
     &::-webkit-scrollbar-track {
-      background: #f8f8f8;
+      background: $bgDark;
       border-radius: 2px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #eee;
+      background: $borderColor;
       border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background: #ccc;
+      background: $borderLight;
     }
 
     .item {
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $borderColor;
       padding: 10px 0;
       position: relative;
 
@@ -165,8 +174,12 @@ const cartStore = useCartStore()
         bottom: 38px;
         right: 0;
         opacity: 0;
-        color: #666;
+        color: $textMuted;
         transition: all 0.5s;
+
+        &:hover {
+          color: $helpColor;
+        }
       }
 
       &:hover {
@@ -191,10 +204,11 @@ const cartStore = useCartStore()
 
           .name {
             font-size: 16px;
+            color: $textPrimary;
           }
 
           .attr {
-            color: #999;
+            color: $textMuted;
             padding-top: 5px;
           }
         }
@@ -210,7 +224,7 @@ const cartStore = useCartStore()
           }
 
           .count {
-            color: #999;
+            color: $textMuted;
             margin-top: 5px;
             font-size: 16px;
           }

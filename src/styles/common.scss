@@ -1,4 +1,5 @@
-// 重置样式
+@import '@/styles/var.scss';
+
 * {
   box-sizing: border-box;
 }
@@ -10,7 +11,8 @@ html {
 
 body {
   height: 100%;
-  color: #333;
+  color: $textPrimary;
+  background: $bgDark;
   min-width: 1240px;
   font: 1em/1.4 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI',
     'Hiragino Sans GB', 'STHeiti', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei',
@@ -31,8 +33,13 @@ dd {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: $textPrimary;
   outline: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $xtxColor;
+  }
 }
 
 i {
@@ -47,9 +54,11 @@ input[type='checkbox'] {
   outline: none;
   border: none;
   -webkit-appearance: none;
+  background: transparent;
+  color: $textPrimary;
 
   &::placeholder {
-    color: #ccc;
+    color: $textMuted;
   }
 }
 
@@ -57,7 +66,7 @@ img {
   max-width: 100%;
   max-height: 100%;
   vertical-align: middle;
-  background: #ebebeb url('@/assets/images/200.png') no-repeat center / contain;
+  background: $bgCard url('@/assets/images/200.png') no-repeat center / contain;
 }
 
 ul {
@@ -65,7 +74,7 @@ ul {
 }
 
 #app {
-  background: #f5f5f5;
+  background: $bgDark;
   user-select: none;
 }
 
@@ -107,7 +116,26 @@ ul {
   clear: both;
 }
 
-// reset element
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bgDark;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $borderColor;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $borderLight;
+  }
+}
+
 .el-breadcrumb__inner.is-link {
   font-weight: 400 !important;
 }

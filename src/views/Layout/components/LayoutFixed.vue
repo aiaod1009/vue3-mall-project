@@ -33,6 +33,8 @@ const categoryStore = useCategoryStore();
 
 
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .app-header-sticky {
   width: 100%;
   height: 80px;
@@ -40,14 +42,12 @@ const categoryStore = useCategoryStore();
   left: 0;
   top: 0;
   z-index: 999;
-  background-color: #fff;
-  border-bottom: 1px solid #e4e4e4;
-  // 此处为关键样式!!!
-  // 状态一：往上平移自身高度 + 完全透明
+  background-color: rgba(22, 27, 34, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $borderColor;
   transform: translateY(-100%);
   opacity: 0;
 
-  // 状态二：移除平移 + 完全不透明
   &.show {
     transition: all 0.3s linear;
     transform: none;
@@ -78,6 +78,8 @@ const categoryStore = useCategoryStore();
       margin-right: 40px;
       font-size: 16px;
       line-height: 1;
+      color: $textPrimary;
+      transition: color 0.3s ease;
 
       &:hover {
         color: $xtxColor;
@@ -103,16 +105,18 @@ const categoryStore = useCategoryStore();
       line-height: 32px;
       height: 32px;
       display: inline-block;
+      color: $textPrimary;
+      transition: all 0.3s ease;
 
       &:hover {
         color: $xtxColor;
-        border-bottom: 1px solid $xtxColor;
+        border-bottom: 2px solid $xtxColor;
       }
     }
 
     .active {
       color: $xtxColor;
-      border-bottom: 1px solid $xtxColor;
+      border-bottom: 2px solid $xtxColor;
     }
   }
 }

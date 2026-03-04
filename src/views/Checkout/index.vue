@@ -182,19 +182,23 @@ const createOrder = async () => {
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .xtx-pay-checkout-page {
   margin-top: 20px;
 
   .wrapper {
-    background: #fff;
+    background: $bgCard;
     padding: 0 20px;
+    border-radius: 12px;
 
     .box-title {
       font-size: 16px;
       font-weight: normal;
       padding-left: 10px;
       line-height: 70px;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $borderColor;
+      color: $textPrimary;
     }
 
     .box-body {
@@ -204,9 +208,10 @@ const createOrder = async () => {
 }
 
 .address {
-  border: 1px solid #f5f5f5;
+  border: 1px solid $borderColor;
   display: flex;
   align-items: center;
+  border-radius: 8px;
 
   .text {
     flex: 1;
@@ -216,7 +221,7 @@ const createOrder = async () => {
 
     .none {
       line-height: 90px;
-      color: #999;
+      color: $textMuted;
       text-align: center;
       width: 100%;
     }
@@ -227,9 +232,10 @@ const createOrder = async () => {
 
       li {
         line-height: 30px;
+        color: $textPrimary;
 
         span {
-          color: #999;
+          color: $textMuted;
           margin-right: 5px;
 
           >i {
@@ -246,7 +252,7 @@ const createOrder = async () => {
       text-align: center;
       height: 90px;
       line-height: 90px;
-      border-right: 1px solid #f5f5f5;
+      border-right: 1px solid $borderColor;
     }
   }
 
@@ -280,14 +286,17 @@ const createOrder = async () => {
       width: 70px;
       height: 70px;
       margin-right: 20px;
+      border-radius: 8px;
     }
 
     .right {
       line-height: 24px;
 
       p {
+        color: $textPrimary;
+
         &:last-child {
-          color: #999;
+          color: $textMuted;
         }
       }
     }
@@ -295,22 +304,23 @@ const createOrder = async () => {
 
   tr {
     th {
-      background: #f5f5f5;
+      background: $bgHover;
       font-weight: normal;
+      color: $textPrimary;
     }
 
     td,
     th {
       text-align: center;
       padding: 20px;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $borderColor;
 
       &:first-child {
-        border-left: 1px solid #f5f5f5;
+        border-left: 1px solid $borderColor;
       }
 
       &:last-child {
-        border-right: 1px solid #f5f5f5;
+        border-right: 1px solid $borderColor;
       }
     }
   }
@@ -319,16 +329,19 @@ const createOrder = async () => {
 .my-btn {
   width: 228px;
   height: 50px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid $borderColor;
   text-align: center;
   line-height: 48px;
   margin-right: 25px;
-  color: #666666;
+  color: $textSecondary;
   display: inline-block;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 
   &.active,
   &:hover {
     border-color: $xtxColor;
+    color: $xtxColor;
   }
 }
 
@@ -339,6 +352,8 @@ const createOrder = async () => {
     line-height: 50px;
 
     dt {
+      color: $textMuted;
+
       i {
         display: inline-block;
         width: 2em;
@@ -349,6 +364,7 @@ const createOrder = async () => {
       width: 240px;
       text-align: right;
       padding-right: 70px;
+      color: $textPrimary;
 
       &.price {
         font-size: 20px;
@@ -361,7 +377,7 @@ const createOrder = async () => {
 .submit {
   text-align: right;
   padding: 60px;
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid $borderColor;
 }
 
 .addressWrapper {
@@ -376,20 +392,92 @@ const createOrder = async () => {
   align-items: center;
 
   &.item {
-    border: 1px solid #f5f5f5;
+    border: 1px solid $borderColor;
     margin-bottom: 10px;
     cursor: pointer;
+    border-radius: 8px;
 
     &.active,
     &:hover {
       border-color: $xtxColor;
-      background: lighten($xtxColor, 50%);
+      background: rgba(0, 217, 165, 0.1);
     }
 
     >ul {
       padding: 10px;
       font-size: 14px;
       line-height: 30px;
+
+      li {
+        color: $textPrimary;
+
+        span {
+          color: $textMuted;
+        }
+      }
+    }
+  }
+}
+
+// Element Plus Dialog 深色主题覆盖
+:deep(.el-dialog) {
+  background: $bgCard;
+  border: 1px solid $borderColor;
+  border-radius: 12px;
+
+  .el-dialog__header {
+    background: $bgCard;
+    border-bottom: 1px solid $borderColor;
+    margin: 0;
+    padding: 20px;
+
+    .el-dialog__title {
+      color: $textPrimary;
+    }
+
+    .el-dialog__headerbtn {
+      .el-dialog__close {
+        color: $textMuted;
+
+        &:hover {
+          color: $xtxColor;
+        }
+      }
+    }
+  }
+
+  .el-dialog__body {
+    background: $bgCard;
+    color: $textPrimary;
+    padding: 20px;
+  }
+
+  .el-dialog__footer {
+    background: $bgCard;
+    border-top: 1px solid $borderColor;
+    padding: 20px;
+
+    .dialog-footer {
+      .el-button {
+        background: $bgHover;
+        border-color: $borderColor;
+        color: $textPrimary;
+
+        &:hover {
+          border-color: $xtxColor;
+          color: $xtxColor;
+        }
+
+        &.el-button--primary {
+          background: $xtxColor;
+          border-color: $xtxColor;
+          color: $bgDark;
+
+          &:hover {
+            background: lighten($xtxColor, 10%);
+          }
+        }
+      }
     }
   }
 }

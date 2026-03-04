@@ -18,16 +18,22 @@ defineProps({
 </template>
 
 <style lang='scss'>
+@import '@/styles/var.scss';
+
 .goods-item {
   display: block;
   width: 220px;
   padding: 20px 30px;
   text-align: center;
   transition: all .5s;
+  background: $bgCard;
+  border-radius: 12px;
+  border: 1px solid $borderColor;
 
   &:hover {
-    transform: translate3d(0, -3px, 0);
-    box-shadow: 0 3px 8px rgb(0 0 0 / 20%);
+    transform: translate3d(0, -5px, 0);
+    box-shadow: $shadowGlow;
+    border-color: $xtxColor;
   }
 
   img {
@@ -41,10 +47,11 @@ defineProps({
 
   .name {
     font-size: 16px;
+    color: $textPrimary;
   }
 
   .desc {
-    color: #999;
+    color: $textMuted;
     height: 29px;
   }
 

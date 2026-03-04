@@ -10,7 +10,6 @@ const categoryStore = useCategoryStore();
       <li v-for="item in categoryStore.categoryList" :key="item.id">
         <RouterLink to="/">{{ item.name }}</RouterLink>
         <RouterLink v-for="i in item.children.slice(0, 2)" :key="i" to="/">{{ i.name }}</RouterLink>
-        <!-- 弹层layer位置 -->
         <div class="layer">
           <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
           <ul>
@@ -33,12 +32,14 @@ const categoryStore = useCategoryStore();
   </div>
 </template>
 
-
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .home-category {
   width: 250px;
   height: 500px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(22, 27, 34, 0.95);
+  backdrop-filter: blur(10px);
   position: relative;
   z-index: 99;
 
@@ -47,14 +48,15 @@ const categoryStore = useCategoryStore();
       padding-left: 40px;
       height: 55px;
       line-height: 55px;
+      transition: all 0.3s ease;
 
       &:hover {
-        background: $xtxColor;
+        background: linear-gradient(90deg, $xtxColor 0%, rgba(0, 217, 165, 0.7) 100%);
       }
 
       a {
         margin-right: 4px;
-        color: #fff;
+        color: $textPrimary;
 
         &:first-child {
           font-size: 16px;
@@ -64,21 +66,24 @@ const categoryStore = useCategoryStore();
       .layer {
         width: 990px;
         height: 500px;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(22, 27, 34, 0.98);
+        backdrop-filter: blur(10px);
         position: absolute;
         left: 250px;
         top: 0;
         display: none;
         padding: 0 15px;
+        border: 1px solid $borderColor;
 
         h4 {
           font-size: 20px;
           font-weight: normal;
           line-height: 80px;
+          color: $textPrimary;
 
           small {
             font-size: 16px;
-            color: #666;
+            color: $textMuted;
           }
         }
 
@@ -91,9 +96,10 @@ const categoryStore = useCategoryStore();
             height: 120px;
             margin-right: 15px;
             margin-bottom: 15px;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            background: #fff;
+            border: 1px solid $borderColor;
+            border-radius: 8px;
+            background: $bgCard;
+            transition: all 0.3s ease;
 
             &:nth-child(3n) {
               margin-right: 0;
@@ -107,7 +113,7 @@ const categoryStore = useCategoryStore();
               padding: 10px;
 
               &:hover {
-                background: #e3f9f4;
+                background: $bgHover;
               }
 
               img {
@@ -122,11 +128,11 @@ const categoryStore = useCategoryStore();
 
                 .name {
                   font-size: 16px;
-                  color: #666;
+                  color: $textPrimary;
                 }
 
                 .desc {
-                  color: #999;
+                  color: $textMuted;
                 }
 
                 .price {
@@ -143,7 +149,6 @@ const categoryStore = useCategoryStore();
         }
       }
 
-      // 关键样式  hover状态下的layer盒子变成block
       &:hover {
         .layer {
           display: block;

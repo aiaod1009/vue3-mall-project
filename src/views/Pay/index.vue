@@ -62,21 +62,23 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .xtx-pay-page {
   margin-top: 20px;
 }
 
 .pay-info {
-
-  background: #fff;
+  background: $bgCard;
   display: flex;
   align-items: center;
   height: 240px;
   padding: 0 80px;
+  border-radius: 12px;
 
   .icon {
     font-size: 80px;
-    color: #1dc779;
+    color: $sucColor;
   }
 
   .tip {
@@ -87,10 +89,11 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
       &:first-child {
         font-size: 20px;
         margin-bottom: 5px;
+        color: $textPrimary;
       }
 
       &:last-child {
-        color: #999;
+        color: $textMuted;
         font-size: 16px;
       }
     }
@@ -100,7 +103,7 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
     span {
       &:first-child {
         font-size: 16px;
-        color: #999;
+        color: $textMuted;
       }
 
       &:last-child {
@@ -113,33 +116,38 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
 
 .pay-type {
   margin-top: 20px;
-  background-color: #fff;
+  background-color: $bgCard;
   padding-bottom: 70px;
+  border-radius: 12px;
 
   p {
     line-height: 70px;
     height: 70px;
     padding-left: 30px;
     font-size: 16px;
+    color: $textPrimary;
 
     &.head {
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid $borderColor;
     }
   }
 
   .btn {
     width: 150px;
     height: 50px;
-    border: 1px solid #e4e4e4;
+    border: 1px solid $borderColor;
     text-align: center;
     line-height: 48px;
     margin-left: 30px;
-    color: #666666;
+    color: $textSecondary;
     display: inline-block;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 
     &.active,
     &:hover {
       border-color: $xtxColor;
+      color: $xtxColor;
     }
 
     &.alipay {

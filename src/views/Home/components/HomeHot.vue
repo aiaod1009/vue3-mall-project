@@ -28,6 +28,8 @@ onMounted(() => getHotList())
 </template>
 
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .goods-list {
   display: flex;
   justify-content: space-between;
@@ -37,25 +39,31 @@ onMounted(() => getHotList())
     width: 306px;
     height: 406px;
     transition: all .5s;
+    border-radius: 12px;
+    background: $bgCard;
+    border: 1px solid $borderColor;
 
     &:hover {
-      transform: translate3d(0, -3px, 0);
-      box-shadow: 0 3px 8px rgb(0 0 0 / 20%);
+      transform: translate3d(0, -8px, 0);
+      box-shadow: $shadowGlow;
+      border-color: $xtxColor;
     }
 
     img {
       width: 306px;
       height: 306px;
+      border-radius: 12px 12px 0 0;
     }
 
     p {
       font-size: 22px;
       padding-top: 12px;
       text-align: center;
+      color: $textPrimary;
     }
 
     .desc {
-      color: #999;
+      color: $textMuted;
       font-size: 18px;
     }
   }

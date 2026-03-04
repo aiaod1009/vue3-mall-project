@@ -1,6 +1,5 @@
 <template>
   <footer class="app_footer">
-    <!-- 联系我们 -->
     <div class="contact">
       <div class="container">
         <dl>
@@ -28,7 +27,6 @@
         </dl>
       </div>
     </div>
-    <!-- 其它 -->
     <div class="extra">
       <div class="container">
         <div class="slogan">
@@ -45,7 +43,6 @@
             <span>品质新鲜</span>
           </a>
         </div>
-        <!-- 版权信息 -->
         <div class="copyright">
           <p>
             <a href="javascript:;">关于我们</a>
@@ -64,13 +61,15 @@
 </template>
 
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .app_footer {
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: $bgDark;
   padding-top: 20px;
 
   .contact {
-    background: #fff;
+    background: $bgCard;
 
     .container {
       padding: 60px 0 40px 25px;
@@ -81,8 +80,8 @@
       height: 190px;
       text-align: center;
       padding: 0 72px;
-      border-right: 1px solid #f2f2f2;
-      color: #999;
+      border-right: 1px solid $borderColor;
+      color: $textSecondary;
 
       &:first-child {
         padding-left: 0;
@@ -97,6 +96,7 @@
     dt {
       line-height: 1;
       font-size: 18px;
+      color: $textPrimary;
     }
 
     dd {
@@ -105,15 +105,19 @@
       width: 92px;
       height: 92px;
       padding-top: 10px;
-      border: 1px solid #ededed;
+      border: 1px solid $borderColor;
+      border-radius: 8px;
+      transition: all 0.3s ease;
 
       .iconfont {
         font-size: 36px;
         display: block;
-        color: #666;
+        color: $textSecondary;
       }
 
       &:hover {
+        border-color: $xtxColor;
+
         .iconfont {
           color: $xtxColor;
         }
@@ -128,7 +132,7 @@
       width: 92px;
       height: 92px;
       padding: 7px;
-      border: 1px solid #ededed;
+      border: 1px solid $borderColor;
     }
 
     .download {
@@ -140,6 +144,7 @@
 
       span {
         display: block;
+        color: $textSecondary;
       }
 
       a {
@@ -147,16 +152,22 @@
         line-height: 1;
         padding: 10px 25px;
         margin-top: 5px;
-        color: #fff;
-        border-radius: 2px;
-        background-color: $xtxColor;
+        color: $bgDark;
+        border-radius: 6px;
+        background: $gradientPrimary;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: $shadowGlow;
+        }
       }
     }
 
     .hotline {
       padding-top: 20px;
       font-size: 22px;
-      color: #666;
+      color: $textPrimary;
       width: auto;
       height: auto;
       border: none;
@@ -164,39 +175,45 @@
       small {
         display: block;
         font-size: 15px;
-        color: #999;
+        color: $textMuted;
       }
     }
   }
 
   .extra {
-    background-color: #333;
+    background-color: $bgDark;
+    border-top: 1px solid $borderColor;
   }
 
   .slogan {
     height: 178px;
     line-height: 58px;
     padding: 60px 100px;
-    border-bottom: 1px solid #434343;
+    border-bottom: 1px solid $borderColor;
     display: flex;
     justify-content: space-between;
 
     a {
       height: 58px;
       line-height: 58px;
-      color: #fff;
+      color: $textPrimary;
       font-size: 28px;
+      transition: all 0.3s ease;
 
       i {
         font-size: 50px;
         vertical-align: middle;
         margin-right: 10px;
         font-weight: 100;
+        color: $xtxColor;
       }
 
       span {
         vertical-align: middle;
-        text-shadow: 0 0 1px #333;
+      }
+
+      &:hover {
+        color: $xtxColor;
       }
     }
   }
@@ -205,7 +222,7 @@
     height: 170px;
     padding-top: 40px;
     text-align: center;
-    color: #999;
+    color: $textMuted;
     font-size: 15px;
 
     p {
@@ -214,13 +231,18 @@
     }
 
     a {
-      color: #999;
+      color: $textMuted;
       line-height: 1;
       padding: 0 10px;
-      border-right: 1px solid #999;
+      border-right: 1px solid $borderColor;
+      transition: color 0.3s ease;
 
       &:last-child {
         border-right: none;
+      }
+
+      &:hover {
+        color: $xtxColor;
       }
     }
   }

@@ -18,20 +18,17 @@ onMounted(() => getDetailData())
 // sku规格被操作时
 let skuObj = {}
 const skuChange = (sku) => {
-  // console.log(sku)
   skuObj = sku
 }
 
 // count
 const count = ref(1)
 const countChange = (count) => {
-  // console.log(count)
 }
 
 // 添加购物车
 const addCart = () => {
   if (skuObj.skuId) {
-    // 规格已经被选择 触发action
     cartStore.addCart({
       id: goods.value.id,
       name: goods.value.name,
@@ -43,7 +40,6 @@ const addCart = () => {
       selected: true
     })
   } else {
-    // 规格没有选择 提示用户
     ElMessage.warning('请选择规格')
   }
 }
@@ -55,15 +51,12 @@ const addCart = () => {
       <div class="bread-container">
         <el-breadcrumb separator=">">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <!-- 错误原因：goods一开始{} 没有categories属性，导致访问goods.categories[1]时报错
-          1. 可选链的语法?.
-          2. v-if手动控制渲染时机，保证只有数据存在才渲染 -->
           <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{ goods.categories[1].name }}
           </el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{ goods.categories[0].name
           }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ goods.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 商品信息 -->
@@ -92,7 +85,7 @@ const addCart = () => {
                 </li>
                 <li>
                   <p>品牌信息</p>
-                  <p>{{ goods.brand?.name }}+</p>
+                  <p>{{ goods.brand?.name }}</p>
                   <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                 </li>
               </ul>
@@ -102,8 +95,8 @@ const addCart = () => {
               <p class="g-name"> {{ goods.name }}</p>
               <p class="g-desc">{{ goods.desc }} </p>
               <p class="g-price">
-                <span>{{ goods.oldPrice }}</span>
-                <span> {{ goods.price }}</span>
+                <span>{{ goods.price }}</span>
+                <span> {{ goods.oldPrice }}</span>
               </p>
               <div class="g-service">
                 <dl>
@@ -168,12 +161,14 @@ const addCart = () => {
   </div>
 </template>
 
-
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .xtx-goods-page {
   .goods-info {
     min-height: 600px;
-    background: #fff;
+    background: $bgCard;
+    border-radius: 12px;
     display: flex;
 
     .media {
@@ -205,32 +200,83 @@ const addCart = () => {
 
   .goods-tabs {
     min-height: 600px;
-    background: #fff;
-  }
+    background: $bgCard;
+    border-radius: 12px;
 
-  .goods-warn {
-    min-height: 600px;
-    background: #fff;
-    margin-top: 20px;
-  }
+    nav {
+      height: 70px;
+      line-height: 70px;
+      display: flex;
+      border-bottom: 1px solid $borderColor;
 
-  .number-box {
-    display: flex;
-    align-items: center;
+      a {
+        padding: 0 40px;
+        font-size: 18px;
+        position: relative;
+        color: $textPrimary;
 
-    .label {
-      width: 60px;
-      color: #999;
-      padding-left: 10px;
+        >span {
+          color: $priceColor;
+          font-size: 16px;
+          margin-left: 10px;
+        }
+      }
     }
+  }
+
+  .goods-detail {
+    padding: 40px;
+
+    .attrs {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+
+      li {
+        display: flex;
+        margin-bottom: 10px;
+        width: 50%;
+
+        .dt {
+          width: 100px;
+          color: $textMuted;
+        }
+
+        .dd {
+          flex: 1;
+          color: $textPrimary;
+        }
+      }
+    }
+
+    >img {
+      width: 100%;
+    }
+  }
+
+  .btn {
+    margin-top: 20px;
+    background: $gradientPrimary;
+    border: none;
+    color: $bgDark;
+    font-weight: 600;
+
+    &:hover {
+      box-shadow: $shadowGlow;
+    }
+  }
+
+  .bread-container {
+    padding: 25px 0;
   }
 
   .g-name {
     font-size: 22px;
+    color: $textPrimary;
   }
 
   .g-desc {
-    color: #999;
+    color: $textMuted;
     margin-top: 10px;
   }
 
@@ -250,7 +296,7 @@ const addCart = () => {
       }
 
       &:last-child {
-        color: #999;
+        color: $textMuted;
         text-decoration: line-through;
         font-size: 16px;
       }
@@ -258,10 +304,11 @@ const addCart = () => {
   }
 
   .g-service {
-    background: #f5f5f5;
+    background: $bgHover;
     width: 500px;
     padding: 20px 10px 0 10px;
     margin-top: 10px;
+    border-radius: 8px;
 
     dl {
       padding-bottom: 20px;
@@ -270,11 +317,11 @@ const addCart = () => {
 
       dt {
         width: 50px;
-        color: #999;
+        color: $textMuted;
       }
 
       dd {
-        color: #666;
+        color: $textPrimary;
 
         &:last-child {
           span {
@@ -311,13 +358,13 @@ const addCart = () => {
         top: 10px;
         left: 0;
         height: 60px;
-        border-left: 1px solid #e4e4e4;
+        border-left: 1px solid $borderColor;
         content: "";
       }
 
       p {
         &:first-child {
-          color: #999;
+          color: $textMuted;
         }
 
         &:nth-child(2) {
@@ -326,7 +373,7 @@ const addCart = () => {
         }
 
         &:last-child {
-          color: #666;
+          color: $textSecondary;
           margin-top: 10px;
 
           i {
@@ -343,68 +390,5 @@ const addCart = () => {
       }
     }
   }
-}
-
-.goods-tabs {
-  min-height: 600px;
-  background: #fff;
-
-  nav {
-    height: 70px;
-    line-height: 70px;
-    display: flex;
-    border-bottom: 1px solid #f5f5f5;
-
-    a {
-      padding: 0 40px;
-      font-size: 18px;
-      position: relative;
-
-      >span {
-        color: $priceColor;
-        font-size: 16px;
-        margin-left: 10px;
-      }
-    }
-  }
-}
-
-.goods-detail {
-  padding: 40px;
-
-  .attrs {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-
-    li {
-      display: flex;
-      margin-bottom: 10px;
-      width: 50%;
-
-      .dt {
-        width: 100px;
-        color: #999;
-      }
-
-      .dd {
-        flex: 1;
-        color: #666;
-      }
-    }
-  }
-
-  >img {
-    width: 100%;
-  }
-}
-
-.btn {
-  margin-top: 20px;
-
-}
-
-.bread-container {
-  padding: 25px 0;
 }
 </style>

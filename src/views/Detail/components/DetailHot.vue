@@ -50,27 +50,43 @@ onMounted(() => getHotList())
 
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .goods-hot {
   h3 {
     height: 70px;
-    background: $helpColor;
+    background: $gradientAccent;
     color: #fff;
     font-size: 18px;
     line-height: 70px;
     padding-left: 25px;
     margin-bottom: 10px;
     font-weight: normal;
+    border-radius: 12px 12px 0 0;
   }
 
   .goods-item {
     display: block;
     padding: 20px 30px;
     text-align: center;
-    background: #fff;
+    background: $bgCard;
+    border-bottom: 1px solid $borderColor;
+    transition: all 0.3s ease;
+
+    &:last-child {
+      border-bottom: none;
+      border-radius: 0 0 12px 12px;
+    }
+
+    &:hover {
+      background: $bgHover;
+      transform: translateY(-3px);
+    }
 
     img {
       width: 160px;
       height: 160px;
+      border-radius: 8px;
     }
 
     p {
@@ -79,10 +95,11 @@ onMounted(() => getHotList())
 
     .name {
       font-size: 16px;
+      color: $textPrimary;
     }
 
     .desc {
-      color: #999;
+      color: $textMuted;
       height: 29px;
     }
 

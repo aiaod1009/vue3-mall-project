@@ -4,7 +4,6 @@ import { getGoodsAPI } from '@/apis/home';
 import { onMounted, ref } from 'vue';
 import GoodsItem from './GoodsItem.vue';
 
-// 获取数据列表
 const goodsProduct = ref([]);
 const getGoods = async () => {
   const res = await getGoodsAPI();
@@ -39,8 +38,10 @@ onMounted(() => {
 </template>
 
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .home-product {
-  background: #fff;
+  background: $bgDark;
   margin-top: 20px;
 
   .sub {
@@ -50,10 +51,11 @@ onMounted(() => {
       padding: 2px 12px;
       font-size: 16px;
       border-radius: 4px;
+      color: $textSecondary;
 
       &:hover {
         background: $xtxColor;
-        color: #fff;
+        color: $bgDark;
       }
 
       &:last-child {
@@ -70,10 +72,13 @@ onMounted(() => {
       height: 610px;
       margin-right: 10px;
       position: relative;
+      border-radius: 12px;
+      overflow: hidden;
 
       img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
 
       .label {
@@ -81,7 +86,7 @@ onMounted(() => {
         height: 66px;
         display: flex;
         font-size: 18px;
-        color: #fff;
+        color: $textPrimary;
         line-height: 66px;
         font-weight: normal;
         position: absolute;
@@ -94,12 +99,12 @@ onMounted(() => {
 
           &:first-child {
             width: 76px;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 217, 165, 0.95);
           }
 
           &:last-child {
             flex: 1;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(139, 92, 246, 0.85);
           }
         }
       }
@@ -125,8 +130,6 @@ onMounted(() => {
         }
       }
     }
-
-
   }
 }
 </style>

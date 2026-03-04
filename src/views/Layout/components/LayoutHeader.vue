@@ -5,7 +5,6 @@ import HeaderCart from './HeaderCart.vue';
 const categoryStore = useCategoryStore();
 </script>
 
-
 <template>
   <header class='app-header'>
     <div class="container">
@@ -24,16 +23,17 @@ const categoryStore = useCategoryStore();
         <i class="iconfont icon-search"></i>
         <input type="text" placeholder="搜一搜">
       </div>
-      <!-- 头部购物车 -->
       <HeaderCart />
     </div>
   </header>
 </template>
 
-
 <style scoped lang='scss'>
+@import '@/styles/var.scss';
+
 .app-header {
-  background: #fff;
+  background: $bgCard;
+  border-bottom: 1px solid $borderColor;
 
   .container {
     display: flex;
@@ -69,16 +69,18 @@ const categoryStore = useCategoryStore();
         line-height: 32px;
         height: 32px;
         display: inline-block;
+        color: $textPrimary;
+        transition: all 0.3s ease;
 
         &:hover {
           color: $xtxColor;
-          border-bottom: 1px solid $xtxColor;
+          border-bottom: 2px solid $xtxColor;
         }
       }
 
       .active {
         color: $xtxColor;
-        border-bottom: 1px solid $xtxColor;
+        border-bottom: 2px solid $xtxColor;
       }
     }
   }
@@ -87,18 +89,26 @@ const categoryStore = useCategoryStore();
     width: 170px;
     height: 32px;
     position: relative;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid $borderColor;
     line-height: 32px;
+    transition: border-color 0.3s ease;
+
+    &:focus-within {
+      border-color: $xtxColor;
+    }
 
     .icon-search {
       font-size: 18px;
       margin-left: 5px;
+      color: $textMuted;
+      transition: color 0.3s ease;
     }
 
     input {
       width: 140px;
       padding-left: 5px;
-      color: #666;
+      color: $textPrimary;
+      background: transparent;
     }
   }
 
@@ -111,6 +121,12 @@ const categoryStore = useCategoryStore();
       text-align: center;
       position: relative;
       display: block;
+      color: $textPrimary;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $xtxColor;
+      }
 
       .icon-cart {
         font-size: 22px;
@@ -123,8 +139,8 @@ const categoryStore = useCategoryStore();
         top: 0;
         padding: 1px 6px;
         line-height: 1;
-        background: $helpColor;
-        color: #fff;
+        background: $gradientAccent;
+        color: white;
         font-size: 12px;
         border-radius: 10px;
         font-family: Arial;

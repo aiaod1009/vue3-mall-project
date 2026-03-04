@@ -39,18 +39,21 @@ onMounted(() => getOrderInfo())
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .pay-result {
   padding: 100px 0;
-  background: #fff;
+  background: $bgCard;
   text-align: center;
   margin-top: 20px;
+  border-radius: 12px;
 
   >.iconfont {
     font-size: 100px;
   }
 
   .green {
-    color: #1dc779;
+    color: $sucColor;
   }
 
   .red {
@@ -59,15 +62,21 @@ onMounted(() => getOrderInfo())
 
   .tit {
     font-size: 24px;
+    color: $textPrimary;
   }
 
   .tip {
-    color: #999;
+    color: $textMuted;
   }
 
   p {
     line-height: 40px;
     font-size: 16px;
+    color: $textSecondary;
+
+    span {
+      color: $textPrimary;
+    }
   }
 
   .btn {
@@ -76,8 +85,13 @@ onMounted(() => getOrderInfo())
 
   .alert {
     font-size: 12px;
-    color: #999;
+    color: $textMuted;
     margin-top: 50px;
+
+    .iconfont {
+      color: $warnColor;
+      margin-right: 5px;
+    }
   }
 }
 </style>

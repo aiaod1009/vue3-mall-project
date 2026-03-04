@@ -27,9 +27,7 @@ const reqData = ref({
 })
 const getGoodList = async () => {
   const res = await getSubCategoryAPI(reqData.value);
-  // console.log(res);
   goodList.value = res.result.items;
-
 }
 onMounted(() => {
   getGoodList();
@@ -37,7 +35,6 @@ onMounted(() => {
 
 // tab切换回调
 const tabChange = () => {
-  // console.log('tab切换了', reqData.value.sortField);
   reqData.value.page = 1;
   getGoodList();
 }
@@ -46,14 +43,10 @@ const tabChange = () => {
 const disabled = ref(false);
 const load = async () => {
   console.log('加载更多数据');
-  // 获取下一页的数据
   reqData.value.page++;
   const res = await getSubCategoryAPI(reqData.value);
-  // 追加到goodList中
   goodList.value = [...goodList.value, ...res.result.items]
-  // 加载完毕 停止监听
   if (res.result.items.length === 0) {
-    // 没有更多数据了
     disabled.value = true;
   }
 }
@@ -85,17 +78,17 @@ const load = async () => {
 
 </template>
 
-
-
 <style lang="scss" scoped>
+@import '@/styles/var.scss';
+
 .bread-container {
   padding: 25px 0;
-  color: #666;
 }
 
 .sub-container {
   padding: 20px 10px;
-  background-color: #fff;
+  background-color: $bgCard;
+  border-radius: 12px;
 
   .body {
     display: flex;
@@ -121,10 +114,11 @@ const load = async () => {
 
     .name {
       font-size: 16px;
+      color: $textPrimary;
     }
 
     .desc {
-      color: #999;
+      color: $textMuted;
       height: 29px;
     }
 
@@ -139,7 +133,5 @@ const load = async () => {
     display: flex;
     justify-content: center;
   }
-
-
 }
 </style>

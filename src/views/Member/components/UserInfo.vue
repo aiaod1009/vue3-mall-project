@@ -49,10 +49,13 @@ onMounted(() => getLikeList())
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .home-overview {
   height: 132px;
-  background: url(@/assets/images/center-bg.png) no-repeat center / cover;
+  background: linear-gradient(135deg, $xtxColor 0%, $helpColor 100%);
   display: flex;
+  border-radius: 12px 12px 0 0;
 
   .user-meta {
     flex: 1;
@@ -65,6 +68,7 @@ onMounted(() => getLikeList())
       border-radius: 50%;
       overflow: hidden;
       margin-left: 60px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
 
       img {
         width: 100%;
@@ -87,13 +91,18 @@ onMounted(() => getLikeList())
     justify-content: space-around;
 
     &:first-child {
-      border-right: 1px solid #f4f4f4;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     a {
       color: white;
       font-size: 16px;
       text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+      }
 
       .iconfont {
         font-size: 32px;
@@ -109,18 +118,19 @@ onMounted(() => getLikeList())
 .like-container {
   margin-top: 20px;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: $bgCard;
 }
 
 .home-panel {
-  background-color: #fff;
+  background-color: $bgCard;
   padding: 0 20px;
   margin-top: 20px;
   height: 400px;
+  border-radius: 12px;
 
   .header {
     height: 66px;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid $borderColor;
     padding: 18px 0;
     display: flex;
     justify-content: space-between;
@@ -129,6 +139,7 @@ onMounted(() => getLikeList())
     h4 {
       font-size: 22px;
       font-weight: 400;
+      color: $textPrimary;
     }
 
   }

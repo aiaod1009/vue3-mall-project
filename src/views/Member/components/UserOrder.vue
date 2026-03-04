@@ -147,6 +147,8 @@ const fomartPayState = (payState) => {
 </template>
 
 <style scoped lang="scss">
+@import '@/styles/var.scss';
+
 .order-container {
   padding: 10px 20px;
 
@@ -169,17 +171,20 @@ const fomartPayState = (payState) => {
 
 .order-item {
   margin-bottom: 20px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid $borderColor;
+  border-radius: 8px;
+  overflow: hidden;
 
   .head {
     height: 50px;
     line-height: 50px;
-    background: #f5f5f5;
+    background: $bgHover;
     padding: 0 20px;
     overflow: hidden;
 
     span {
       margin-right: 20px;
+      color: $textMuted;
 
       &.down-time {
         margin-right: 0;
@@ -200,7 +205,7 @@ const fomartPayState = (payState) => {
     .del {
       margin-right: 0;
       float: right;
-      color: #999;
+      color: $textMuted;
     }
   }
 
@@ -209,12 +214,13 @@ const fomartPayState = (payState) => {
     align-items: stretch;
 
     .column {
-      border-left: 1px solid #f5f5f5;
+      border-left: 1px solid $borderColor;
       text-align: center;
       padding: 20px;
 
       >p {
         padding-top: 10px;
+        color: $textSecondary;
       }
 
       &:first-child {
@@ -228,7 +234,7 @@ const fomartPayState = (payState) => {
 
         ul {
           li {
-            border-bottom: 1px solid #f5f5f5;
+            border-bottom: 1px solid $borderColor;
             padding: 10px;
             display: flex;
 
@@ -239,7 +245,15 @@ const fomartPayState = (payState) => {
             .image {
               width: 70px;
               height: 70px;
-              border: 1px solid #f5f5f5;
+              border: 1px solid $borderColor;
+              border-radius: 8px;
+              overflow: hidden;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
 
             .info {
@@ -252,10 +266,11 @@ const fomartPayState = (payState) => {
 
                 &.name {
                   height: 38px;
+                  color: $textPrimary;
                 }
 
                 &.attr {
-                  color: #999;
+                  color: $textMuted;
                   font-size: 12px;
 
                   span {
@@ -267,10 +282,12 @@ const fomartPayState = (payState) => {
 
             .price {
               width: 100px;
+              color: $textPrimary;
             }
 
             .count {
               width: 80px;
+              color: $textMuted;
             }
           }
         }
@@ -278,6 +295,10 @@ const fomartPayState = (payState) => {
 
       &.state {
         width: 120px;
+
+        p {
+          color: $textPrimary;
+        }
 
         .green {
           color: $xtxColor;
@@ -297,6 +318,8 @@ const fomartPayState = (payState) => {
 
         a {
           display: block;
+          color: $textSecondary;
+          transition: color 0.3s ease;
 
           &:hover {
             color: $xtxColor;
